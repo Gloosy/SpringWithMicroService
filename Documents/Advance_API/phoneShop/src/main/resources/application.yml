@@ -1,0 +1,29 @@
+spring:
+  liquibase:
+        change-log: classpath:db/changelog/db.changelog-master.yaml
+        
+  datasource:
+    url: jdbc:postgresql://localhost:5432/phoneshop
+    username: phoneshop
+    password: 2002
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+        hibernate:
+         dialect: org.hibernate.dialect.PostgreSQL95Dialect
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+application:
+  rest:
+    allowed-origins: ${ALLOWED_ORIGINS:http://localhost:4200, http://localhost:8080}
+    contxet-path: /api
+  mvc:
+    pathmatch:
+        matching-strategy: ant_path_matcher
+
+
+
+
+

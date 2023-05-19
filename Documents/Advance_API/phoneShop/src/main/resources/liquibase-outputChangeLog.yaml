@@ -1,0 +1,271 @@
+databaseChangeLog:
+- changeSet:
+    id: 1674290836460-1
+    author: ACER (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: color_pkey
+            name: id
+            type: BIGINT
+        - column:
+            name: name
+            type: VARCHAR(255)
+        tableName: color
+- changeSet:
+    id: 1674290836460-2
+    author: ACER (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: product_import_history_pkey
+            name: id
+            type: BIGINT
+        - column:
+            name: date_import
+            type: TIMESTAMP WITHOUT TIME ZONE
+        - column:
+            name: import_unit
+            type: INTEGER
+        - column:
+            name: price_per_unit
+            type: numeric(19, 2)
+        - column:
+            name: product_id
+            type: BIGINT
+        tableName: product_import_history
+- changeSet:
+    id: 1674290836460-3
+    author: ACER (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: products_pkey
+            name: id
+            type: BIGINT
+        - column:
+            name: available_unit
+            type: INTEGER
+        - column:
+            name: image_path
+            type: VARCHAR(255)
+        - column:
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: sale_price
+            type: FLOAT8
+        - column:
+            name: color_id
+            type: BIGINT
+        - column:
+            name: model_id
+            type: BIGINT
+        tableName: products
+- changeSet:
+    id: 1674290836460-4
+    author: ACER (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: brands_pkey
+            name: id
+            type: BIGINT
+        - column:
+            name: active
+            type: BOOLEAN
+        - column:
+            name: name
+            type: VARCHAR(255)
+        tableName: brands
+- changeSet:
+    id: 1674290836460-5
+    author: ACER (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: name
+        constraintName: ukoce3937d2f4mpfqrycbr0l93m
+        tableName: brands
+- changeSet:
+    id: 1674290836460-6
+    author: ACER (generated)
+    changes:
+    - createSequence:
+        cacheSize: 1
+        cycle: false
+        dataType: bigint
+        incrementBy: 50
+        maxValue: 9223372036854775807
+        minValue: 1
+        sequenceName: brand_seq
+        startValue: 1
+- changeSet:
+    id: 1674290836460-7
+    author: ACER (generated)
+    changes:
+    - createSequence:
+        cacheSize: 1
+        cycle: false
+        dataType: bigint
+        incrementBy: 50
+        maxValue: 9223372036854775807
+        minValue: 1
+        sequenceName: brand_seq_generator
+        startValue: 1
+- changeSet:
+    id: 1674290836460-8
+    author: ACER (generated)
+    changes:
+    - createSequence:
+        cacheSize: 1
+        cycle: false
+        dataType: bigint
+        incrementBy: 1
+        maxValue: 9223372036854775807
+        minValue: 1
+        sequenceName: hibernate_sequence
+        startValue: 1
+- changeSet:
+    id: 1674290836460-9
+    author: ACER (generated)
+    changes:
+    - createSequence:
+        cacheSize: 1
+        cycle: false
+        dataType: bigint
+        incrementBy: 50
+        maxValue: 9223372036854775807
+        minValue: 1
+        sequenceName: model_seq
+        startValue: 1
+- changeSet:
+    id: 1674290836460-10
+    author: ACER (generated)
+    changes:
+    - createSequence:
+        cacheSize: 1
+        cycle: false
+        dataType: bigint
+        incrementBy: 50
+        maxValue: 9223372036854775807
+        minValue: 1
+        sequenceName: models_seq_generator
+        startValue: 1
+- changeSet:
+    id: 1674290836460-11
+    author: ACER (generated)
+    changes:
+    - createSequence:
+        cacheSize: 1
+        cycle: false
+        dataType: bigint
+        incrementBy: 50
+        maxValue: 9223372036854775807
+        minValue: 1
+        sequenceName: product_seq_generator
+        startValue: 1
+- changeSet:
+    id: 1674290836460-12
+    author: ACER (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: models_pkey
+            name: id
+            type: BIGINT
+        - column:
+            name: models_column
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: year_made
+            type: SMALLINT
+        - column:
+            name: brand_id
+            type: BIGINT
+        tableName: models
+- changeSet:
+    id: 1674290836460-13
+    author: ACER (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: model_id
+        baseTableName: products
+        constraintName: fk29c4nbv58vgu9wg14fd8ac4xy
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: models
+        validate: true
+- changeSet:
+    id: 1674290836460-14
+    author: ACER (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: brand_id
+        baseTableName: models
+        constraintName: fk95s72g5hnsl3o0bqeuhnokdxu
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: brands
+        validate: true
+- changeSet:
+    id: 1674290836460-15
+    author: ACER (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: product_id
+        baseTableName: product_import_history
+        constraintName: fkh1eaksnk8cqojh8sa5fi05e8s
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: products
+        validate: true
+- changeSet:
+    id: 1674290836460-16
+    author: ACER (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: color_id
+        baseTableName: products
+        constraintName: fksn2kwcua92qiagmuldx21va39
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: color
+        validate: true
+
